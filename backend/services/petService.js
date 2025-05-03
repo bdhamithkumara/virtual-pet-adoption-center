@@ -15,8 +15,14 @@ const createPet = async ({name,species,age,personality}) => {
         created_at : new Date().toISOString()
     }
     await petModel.addPet(pet)
+    return pet; 
+}
+
+const getAllPets = async () => {
+    return await petModel.getPet()
 }
 
 module.exports = {
-    createPet
+    createPet, 
+    getAllPets
 } ;

@@ -12,12 +12,25 @@ const addPet = async (req,res) => {
     }
 
     try {
-        const pet = await petService.createPet({name,species,age,personality})
-        res.status(201).json(pet)
+        const create_pet = await petService.createPet({name,species,age,personality})
+        res.status(201).json(create_pet)
     } catch (error) {
         res.status(500).json({error: error.message})
     }
 
 }
 
-module.exports = {addPet};
+
+const getAllPets = async (req,res) => {
+    
+    try {
+        const get_all_pets = await petService.getAllPets()
+        res.status(201).json(get_all_pets)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+
+}
+
+
+module.exports = {addPet,getAllPets};

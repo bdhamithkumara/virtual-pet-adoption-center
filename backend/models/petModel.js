@@ -3,6 +3,7 @@ let pets = [];
 // this for add new pet
 const addPet = async (pet) => {
     pets.push(pet)
+    return pet;
 }
 
 // this for get all the pets
