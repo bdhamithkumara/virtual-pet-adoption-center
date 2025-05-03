@@ -15,7 +15,7 @@ const createPet = async ({name,species,age,personality}) => {
         created_at : new Date().toISOString()
     }
     await petModel.addPet(pet)
-    return { ...pet, mood: calculateMood(pet.created_at) };
+    return pet 
 }
 
 const getAllPets = async () => {
@@ -42,7 +42,7 @@ const updatePetUsingPetId = async (id ,{name,species,age,personality}) => {
     }
 
     await petModel.updatePetUsingPetId(id,updatedPet)
-    return { ...updatedPet, mood: calculateMood(updatedPet.created_at) };
+    return updatedPet 
 }
 
 const deletePetUsingid = async (id) => {
@@ -64,7 +64,7 @@ const adoptPet = async (id) => {
     }
 
     await petModel.updatePetUsingPetId(id,updatedPet)
-    return { pet: { ...updatedPet, mood: calculateMood(updatedPet.created_at) } };
+    return updatedPet
 }
 
 const moodFilter = async (mood) => {
