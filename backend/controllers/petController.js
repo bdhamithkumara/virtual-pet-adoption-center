@@ -43,4 +43,27 @@ const getSinglePetUsingId = async(req,res) => {
     }
 }
 
-module.exports = {addPet,getAllPets,getSinglePetUsingId};
+const updateSinglePetUsingId = async(req, res) =>{
+
+    const {name,species,age,personality} = req.body
+
+    if(!name || !species || !age || !personality){
+        return res.status(400).json({error : 'Missing required data'})
+    }
+
+    if(typeof age !== 'number' || age < 0){
+        return res.status(400).json({error : 'Age must be valid value'})
+    }
+
+    try {
+        const pet = await petService.updatePetUsingPetId(req.params.id, {name,species,age,personality})
+        if(!pet){
+            return res.status(404).json({ error: 'Pet not found for update' });
+        }
+        res.json(pet)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
+
+module.exports = {addPet,getAllPets,getSinglePetUsingId,updateSinglePetUsingId};

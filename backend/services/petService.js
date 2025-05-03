@@ -27,8 +27,28 @@ const getSinglePetUsingId = async (id) => {
     return pet;
 }
 
+const updatePetUsingPetId = async (id ,{name,species,age,personality}) => {
+
+    const petFind = await petModel.getSinglePetUsingId(id)
+
+    if (!petFind) return null;
+
+    const updatedPet = {
+        ...petFind,
+        name,
+        species,
+        age,
+        personality
+    }
+
+    const pet = await petModel.updatePetUsingPetId(id,updatedPet)
+    return pet;
+}
+
+
 module.exports = {
     createPet, 
     getAllPets,
-    getSinglePetUsingId
+    getSinglePetUsingId,
+    updatePetUsingPetId
 } ;
