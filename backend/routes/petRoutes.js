@@ -13,5 +13,9 @@ router.get('/:id', petController.getSinglePetUsingId)
 router.put('/:id', petController.updateSinglePetUsingId)
 // for delete pet using pet id
 router.delete('/:id', petController.deletePetUsingPetId)
+// for adopt pet
+router.patch('/:id/adopt', petController.adoptPetUsingPetId)
+
+
 
 module.exports = router;
