@@ -19,7 +19,7 @@ const createPet = async ({name,species,age,personality}) => {
 }
 
 const getAllPets = async () => {
-    return await petModel.getPet()
+    return await petModel.getPets()
 }
 
 const getSinglePetUsingId = async (id) => {

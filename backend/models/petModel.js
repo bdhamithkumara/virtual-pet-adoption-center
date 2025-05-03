@@ -7,7 +7,7 @@ const addPet = async (pet) => {
 }
 
 // this for get all the pets
-const getPet = async () => {
+const getPets = async () => {
     return pets;
 }
 
@@ -37,5 +37,5 @@ const deletePetUsingId = async (id) => {
 }
 
 module.exports = {
-    addPet,getPet,getSinglePetUsingId,updatePetUsingPetId,deletePetUsingId
+    addPet,getPets,getSinglePetUsingId,updatePetUsingPetId,deletePetUsingId
 }
