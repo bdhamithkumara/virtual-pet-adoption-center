@@ -7,6 +7,8 @@ const petController = require('../controllers/petController')
 router.post('/', petController.addPet)
 // for get all pets
 router.get('/', petController.getAllPets)
+// for pet mood
+router.get('/filter', petController.filterPetsbyMood)
 // for get single pet
 router.get('/:id', petController.getSinglePetUsingId)
 // for update pet using pet id
@@ -15,8 +17,7 @@ router.put('/:id', petController.updateSinglePetUsingId)
 router.delete('/:id', petController.deletePetUsingPetId)
 // for adopt pet
 router.patch('/:id/adopt', petController.adoptPetUsingPetId)
-// for pet mood
-router.get('/filter', petController.filterPetsbyMood)
+
 
 
 

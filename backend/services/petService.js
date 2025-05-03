@@ -70,8 +70,11 @@ const adoptPet = async (id) => {
 const moodFilter = async (mood) => {
     const pet = await petModel.getPets();
     return pet
-        .map((petsHere) => ({...petsHere, mood : calculateMood(petsHere.created_at)})
-        .filter((pet) => pet.mood.toLoweCase() === mood.toLoweCase()))
+    .map((pet) => ({
+      ...pet,
+      mood: calculateMood(pet.created_at)
+    }))
+    .filter((pet) => pet.mood.toLowerCase() === mood.toLowerCase());
 }
 
 module.exports = {
