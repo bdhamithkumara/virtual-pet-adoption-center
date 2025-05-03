@@ -27,7 +27,7 @@ const getSinglePetUsingId = async (id) => {
     return pet;
 }
 
-const updatePetUsingPetId = async (id) => {
+const updatePetUsingPetId = async (id ,{name,species,age,personality}) => {
 
     const petFind = await petModel.getSinglePetUsingId(id)
 
@@ -35,8 +35,10 @@ const updatePetUsingPetId = async (id) => {
 
     const updatedPet = {
         ...petFind,
-        adopted : true,
-        adoption_date : new Date().toISOString()
+        name,
+        species,
+        age,
+        personality
     }
 
     const pet = await petModel.updatePetUsingPetId(id,updatedPet)
@@ -53,11 +55,13 @@ const adoptPet = async (id) => {
 
     if (!petFind) return null;
 
-    if(pet.adopted) return {error : 'pet already adopted'};
-    
+    if(petFind.adopted) return {error : 'pet already adopted'};
+
+
     const updatedPet = {
         ...petFind,
-        
+        adopted: true,
+        adoption_date: new Date().toISOString(),
     }
 
     const pet = await petModel.updatePetUsingPetId(id,updatedPet)
@@ -70,5 +74,6 @@ module.exports = {
     getAllPets,
     getSinglePetUsingId,
     updatePetUsingPetId,
-    deletePetUsingid
+    deletePetUsingid,
+    adoptPet
 } ;

@@ -80,7 +80,7 @@ const deletePetUsingPetId = async(req,res) => {
 
 const adoptPetUsingPetId = async(req,res) => {
     try {
-        const pet = await petService.deletePetUsingid(req.params.id)
+        const pet = await petService.adoptPet(req.params.id)
         if(!pet){
             return res.status(404).json({error : "pet not found"})
         }
