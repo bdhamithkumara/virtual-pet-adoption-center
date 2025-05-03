@@ -66,4 +66,16 @@ const updateSinglePetUsingId = async(req, res) =>{
     }
 }
 
-module.exports = {addPet,getAllPets,getSinglePetUsingId,updateSinglePetUsingId};
+const deletePetUsingPetId = async(req,res) => {
+    try {
+        const pet = await petService.deletePetUsingid(req.params.id)
+        if(!pet){
+            return res.status(404).json({error : "pet not found"})
+        }
+        res.json({ message: 'Pet deleted successfully' });
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
+
+module.exports = {addPet,getAllPets,getSinglePetUsingId,updateSinglePetUsingId,deletePetUsingPetId};

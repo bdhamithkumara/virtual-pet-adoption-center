@@ -45,10 +45,14 @@ const updatePetUsingPetId = async (id ,{name,species,age,personality}) => {
     return pet;
 }
 
+const deletePetUsingid = async (id) => {
+   return await petModel.deletePetUsingId(id)
+}
 
 module.exports = {
     createPet, 
     getAllPets,
     getSinglePetUsingId,
-    updatePetUsingPetId
+    updatePetUsingPetId,
+    deletePetUsingid
 } ;
