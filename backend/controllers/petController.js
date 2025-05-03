@@ -93,4 +93,20 @@ const adoptPetUsingPetId = async(req,res) => {
     }
 }
 
-module.exports = {addPet,getAllPets,getSinglePetUsingId,updateSinglePetUsingId,deletePetUsingPetId,adoptPetUsingPetId};
+const filterPetsbyMood = async (req,res) => {
+    const {mood} = req.query
+
+    if (!mood) {
+        return res.status(400).json({ error: 'mood parameter not founded' });
+    }
+
+    try {
+        const pets = await petService.moodFilter(mood)
+        res.json(pets)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+
+} 
+
+module.exports = {addPet,getAllPets,getSinglePetUsingId,updateSinglePetUsingId,deletePetUsingPetId,adoptPetUsingPetId, filterPetsbyMood};

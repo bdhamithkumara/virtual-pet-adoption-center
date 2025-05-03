@@ -1,7 +1,7 @@
 const {v4 : uuidv4} = require('uuid')
 const petModel = require('../models/petModel')
+const {calculateMood} = require('../utils/moodLogic')
 
-//mood,adopted,adoption_date
 const createPet = async ({name,species,age,personality}) => {
     const pet = {
         id : uuidv4(),
@@ -15,7 +15,7 @@ const createPet = async ({name,species,age,personality}) => {
         created_at : new Date().toISOString()
     }
     await petModel.addPet(pet)
-    return pet; 
+    return { ...pet, mood: calculateMood(pet.created_at) };
 }
 
 const getAllPets = async () => {
@@ -41,8 +41,8 @@ const updatePetUsingPetId = async (id ,{name,species,age,personality}) => {
         personality
     }
 
-    const pet = await petModel.updatePetUsingPetId(id,updatedPet)
-    return pet;
+    await petModel.updatePetUsingPetId(id,updatedPet)
+    return { ...updatedPet, mood: calculateMood(updatedPet.created_at) };
 }
 
 const deletePetUsingid = async (id) => {
@@ -57,18 +57,22 @@ const adoptPet = async (id) => {
 
     if(petFind.adopted) return {error : 'pet already adopted'};
 
-
     const updatedPet = {
         ...petFind,
         adopted: true,
         adoption_date: new Date().toISOString(),
     }
 
-    const pet = await petModel.updatePetUsingPetId(id,updatedPet)
-    return pet;
+    await petModel.updatePetUsingPetId(id,updatedPet)
+    return { pet: { ...updatedPet, mood: calculateMood(updatedPet.created_at) } };
 }
 
-
+const moodFilter = async (mood) => {
+    const pet = await petModel.getPets();
+    return pet
+        .map((petsHere) => ({...petsHere, mood : calculateMood(petsHere.created_at)})
+        .filter((pet) => pet.mood.toLoweCase() === mood.toLoweCase()))
+}
 
 module.exports = {
     createPet, 
@@ -76,5 +80,6 @@ module.exports = {
     getSinglePetUsingId,
     updatePetUsingPetId,
     deletePetUsingid,
-    adoptPet
+    adoptPet,
+    moodFilter
 } ;
