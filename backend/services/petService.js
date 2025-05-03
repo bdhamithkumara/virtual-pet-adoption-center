@@ -22,7 +22,13 @@ const getAllPets = async () => {
     return await petModel.getPet()
 }
 
+const getSinglePetUsingId = async (id) => {
+    const pet = await petModel.getSinglePetUsingId(id)
+    return pet;
+}
+
 module.exports = {
     createPet, 
-    getAllPets
+    getAllPets,
+    getSinglePetUsingId
 } ;

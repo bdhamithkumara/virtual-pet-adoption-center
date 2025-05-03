@@ -22,15 +22,25 @@ const addPet = async (req,res) => {
 
 
 const getAllPets = async (req,res) => {
-    
+
     try {
         const get_all_pets = await petService.getAllPets()
         res.status(201).json(get_all_pets)
     } catch (error) {
         res.status(500).json({error: error.message})
     }
-
 }
 
+const getSinglePetUsingId = async(req,res) => {
+    try {
+        const pet = await petService.getSinglePetUsingId(req.params.id)
+        if(!pet){
+            return res.status(404).json({error : "pet not found"})
+        }
+        res.json(pet)
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
 
-module.exports = {addPet,getAllPets};
+module.exports = {addPet,getAllPets,getSinglePetUsingId};
