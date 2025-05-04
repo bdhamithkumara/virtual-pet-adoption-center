@@ -79,13 +79,44 @@ By default, the frontend runs on **http://localhost:5173**
 
 ## 📹 Demo
 
-You can add a GIF or video demo here. If your video is inside `public/assets/demo.mp4`, you can link it like this:
+   # Add a new pet using a form  
+   ![Watch the demo video](https://i.ibb.co/HD2TfM5f/insert-ezgif-com-video-to-gif-converter.gif)
 
-[🎥 Watch Demo Video](./frontend/public/assets/demo.mp4)
+   # Update a pet’s profile   
+   ![Watch the demo video](https://i.ibb.co/pvptKtBd/update-ezgif-com-video-to-gif-converter.gif)
+   
+   # "Adopt" a pet by marking it as adopted   
+   ![Watch the demo video](https://i.ibb.co/0Vvd2Gdn/adopted-ezgif-com-video-to-gif-converter.gif)
 
-Or better yet, upload a GIF and display it:
+   # Delete a pet from the system   
+   ![Watch the demo video](https://i.ibb.co/jPnZBTtY/delete-ezgif-com-video-to-gif-converter.gif)
 
-![App Demo](./frontend/public/assets/demo.gif)
+   # Filter pets by mood   
+   ![Watch the demo video](https://i.ibb.co/Ng063x6j/filter-ezgif-com-video-to-gif-converter.gif)
+
+   # Adoption Certificate
+   ![Watch the demo video](https://i.ibb.co/pj212Lyk/certificate-ezgif-com-video-to-gif-converter.gif)
+
+   # Add a New Pet  
+   ![Add a New Pet POSTMAN output](https://i.ibb.co/Q3Ww2DX7/Untitled.png)
+
+   # View All Pets 
+   ![View All Pets POSTMAN output](https://i.ibb.co/XZMfDXgx/Screenshot-2025-05-03-135555.png)
+
+   # View a Single Pet   
+   ![View a Single Pet POSTMAN output](https://i.ibb.co/ds30DghC/3.png)
+
+   # Update a Pet’s Profile  
+   ![Update a Pet’s Profile POSTMAN output](https://i.ibb.co/wrQYXX5f/4.png)
+
+   # Adopt a Pet    
+   ![Adopt a Pet POSTMAN output](https://i.ibb.co/9mTx0VCB/5.png)
+
+   # Delete a Pet    
+   ![Delete a Pet POSTMAN output](https://i.ibb.co/xtsFqZ2S/6.png)
+
+   # Filter Pets by Mood      
+   ![Filter Pets by Mood POSTMAN output](https://i.ibb.co/dwgkG5wz/7.png)
 
 ---
 
@@ -102,7 +133,7 @@ Or better yet, upload a GIF and display it:
 
 ## 📜 Technologies Used
 
-- **Frontend:** React (Vite), Tailwind CSS, @react-pdf/renderer, Icons libraries
+- **Frontend:** React (Vite), Tailwind CSS, @react-pdf/renderer
 - **Backend:** Node.js, Express, UUID
 
 ---
@@ -117,4 +148,4 @@ Or better yet, upload a GIF and display it:
 
 ## 📬 Contact
 
-Made by [@bdhamithkumara](https://github.com/bdhamithkumara) — feel free to contribute, star 🌟 the repo or fork!
+Made by [@bdhamithkumara](https://github.com/bdhamithkumara) - feel free to contribute, star 🌟 the repo or fork!
