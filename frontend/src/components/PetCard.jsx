@@ -3,6 +3,7 @@ import { FaPaw, FaEdit, FaTrash } from 'react-icons/fa';
 import * as api from '../services/api';
 import { getMoodColor } from '../utils/helper';
 import JSConfetti from 'js-confetti';
+import { ImHappy2,ImSad2 } from "react-icons/im";
 
 
 function PetCard({ pet, onPetUpdated }) {
@@ -20,8 +21,14 @@ function PetCard({ pet, onPetUpdated }) {
     };
 
     const handleUpdate = useCallback(async () => {
+
+        const updatedData = {
+            ...formData,
+            age: Number(formData.age), 
+          };
+
         try {
-            await api.updatePet(pet.id, formData);
+            await api.updateSinglePetUsingPetId(pet.id, updatedData);
             setIsEditing(false);
             onPetUpdated();
         } catch (error) {
@@ -31,7 +38,7 @@ function PetCard({ pet, onPetUpdated }) {
 
     const handleAdopt = useCallback(async () => {
         try {
-            await api.adoptPet(pet.id);
+            await api.adoptPetUsingPetId(pet.id);
             const confetti = new JSConfetti();
             confetti.addConfetti();
             onPetUpdated();
@@ -51,9 +58,17 @@ function PetCard({ pet, onPetUpdated }) {
         }
     }, [pet.id, onPetUpdated]);
 
+    const moodColor = getMoodColor(pet.mood);
+
+    const moodIcon = moodColor === 'green'
+    ? <div className={`w-[20px] h-[20px] text-[#4ade80] `} />
+    : moodColor === 'red'
+    ? <ImSad2 className={`w-[20px] h-[20px] text-[#dc2626] `} />
+    : null;
+
     return (
         <div
-            className={`bg-white rounded-lg shadow-md p-4 transition-transform transform hover:scale-105 animate-fade-in ${pet.adopted ? 'opacity-75' : ''
+            className={`bg-white w-fit rounded-lg shadow-md p-4 transition-transform transform hover:scale-105 animate-fade-in ${pet.adopted ? 'opacity-75' : ''
                 }`}
         >
             {isEditing ? (
@@ -110,11 +125,11 @@ function PetCard({ pet, onPetUpdated }) {
                     <h2 className="text-xl font-semibold"></h2>
                     <p><strong>Name -</strong> {pet.name}</p>
                     <p><strong>Species -</strong> {pet.species}</p>
-                    <p><strong>Age -</strong> {pet.age}</p>
-                    <p><strong>Personality -</strong> {pet.personality}</p>
-                    <p>
-                        <strong>Mood -</strong>{' '}
-                        <span className={`text-${getMoodColor(pet.mood)}-600`}>{pet.mood}</span>
+                    <p className='flex'>
+                        <strong>Mood - </strong>{' '}
+                        <span className='flex'> {pet.mood}</span> 
+                        <span className='ml-2'>{moodIcon}</span>
+                        
                     </p>
                     <p>
                         <strong>Status -</strong>{' '}

@@ -15,7 +15,7 @@ export default function HomePage() {
   const fetchPets = useCallback(async () => {
     try {
       const data = moodFilter
-        ? await api.filterPetsByMood(moodFilter)
+        ? await api.filterPetsUsingMood(moodFilter)
         : await api.getAllPets();
       setPets(data);
     } catch (error) {
