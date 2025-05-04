@@ -87,14 +87,19 @@ function DownloadPDF({ pet }) {
     )
 
     return (
-        <button
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center flex-row"
-        >
-            <PDFDownloadLink document={<MyDocument pet={pet} />} fileName='adoption_record.pdf' >
-                Download 
-            </PDFDownloadLink>
-            <FaCloudArrowDown className="mr-2" /> 
-        </button>
+        <>
+            {pet.adopted && pet && (
+                <button
+                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center flex-row"
+                >
+                    <PDFDownloadLink document={<MyDocument pet={pet} />} fileName='adoption_record.pdf' >
+                        Download 
+                    </PDFDownloadLink>
+                    <FaCloudArrowDown className="mr-2" /> 
+                </button>
+            )}
+        </>
+        
     )
 }
 
