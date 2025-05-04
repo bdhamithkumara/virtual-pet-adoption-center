@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_URL = 'http://localhost:3000/pets'
+const BACKEND_URL = `${import.meta.env.VITE_BACKEND_URL}/pets`;
 
 export const addPet = async (pet) => {
     const response = await axios.post(BACKEND_URL,pet)

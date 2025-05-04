@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import PetList from '../components/petList'
+import PetList from '../components/PetList'
 import AddPetForm from '../components/AddPetForm'
 import FilterBar from '../components/FilterBar'
 import * as api from '../services/api';
