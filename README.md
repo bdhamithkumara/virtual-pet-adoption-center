@@ -57,7 +57,7 @@ npm install
 
 ```bash
 cd backend
- npm start
+npm run dev
 ```
 
 By default, the backend server runs on **http://localhost:3000**
