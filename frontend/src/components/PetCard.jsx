@@ -43,7 +43,7 @@ function PetCard({ pet, onPetUpdated }) {
     const handleDelete = useCallback(async () => {
         if (window.confirm('Are you sure you want to delete this pet?')) {
             try {
-                await api.deletePet(pet.id);
+                await api.deletePetUisngPetId(pet.id);
                 onPetUpdated();
             } catch (error) {
                 console.error('Error deleting pet:', error);
@@ -107,16 +107,17 @@ function PetCard({ pet, onPetUpdated }) {
                 </div>
             ) : (
                 <>
-                    <h2 className="text-xl font-semibold">{pet.name}</h2>
-                    <p><strong>Species:</strong> {pet.species}</p>
-                    <p><strong>Age:</strong> {pet.age}</p>
-                    <p><strong>Personality:</strong> {pet.personality}</p>
+                    <h2 className="text-xl font-semibold"></h2>
+                    <p><strong>Name -</strong> {pet.name}</p>
+                    <p><strong>Species -</strong> {pet.species}</p>
+                    <p><strong>Age -</strong> {pet.age}</p>
+                    <p><strong>Personality -</strong> {pet.personality}</p>
                     <p>
-                        <strong>Mood:</strong>{' '}
+                        <strong>Mood -</strong>{' '}
                         <span className={`text-${getMoodColor(pet.mood)}-600`}>{pet.mood}</span>
                     </p>
                     <p>
-                        <strong>Status:</strong>{' '}
+                        <strong>Status -</strong>{' '}
                         {pet.adopted ? 'Adopted' : 'Available'}
                     </p>
                     <div className="flex space-x-2 mt-4">
