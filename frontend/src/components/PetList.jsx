@@ -1,4 +1,4 @@
-import PetCard from './petCard';
+import PetCard from './PetCard';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function PetList({ pets, onPetUpdated}) {
