@@ -12,14 +12,6 @@ virtual-pet-adoption-center/
 └── backend/    # Node.js Express API
 ```
 
----
-
-## 🚀 Live Repo
-
-👉 [GitHub Repository](https://github.com/bdhamithkumara/virtual-pet-adoption-center)
-
----
-
 ## 🛠️ Getting Started (Local Setup)
 
 Follow these steps to clone and run the project locally.
