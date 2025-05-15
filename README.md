@@ -1,5 +1,5 @@
 
-# 🐾 Virtual Pet Adoption Center
+# Virtual Pet Adoption Center
 
 A full stack web application for managing a virtual pet adoption center, built with **React (Vite)** for the frontend and **Node.js (Express)** for the backend.
 
